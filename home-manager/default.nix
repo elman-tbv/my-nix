@@ -12,12 +12,12 @@
     ];
 
   home.packages = with pkgs; [
-    vscode
     zsh
+    vim
     fzf
-    neovim
     curl
     wget
+    tmux
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
