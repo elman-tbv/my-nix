@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   home.username = "elman";
   home.homeDirectory = "/Users/elman";
@@ -13,11 +12,15 @@
 
   home.packages = with pkgs; [
     zsh
+    oh-my-zsh
+    zsh-powerlevel10k
     vim
     fzf
     curl
     wget
     tmux
+    bat
+    thefuck
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -42,10 +45,36 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    oh-my-zsh = {
+      enable = true;
+      theme = "powerlevel10k";
+      plugins = [
+        "git"
+        "z"
+        "sudo"
+        "web-search"
+      ];
+    custom = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k";
+    };
+    initContent = ''
+      [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+      '';
+    shellAliases = {
+      fk = "fuck";
+    };
   };
 
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.thefuck = {
+    enable = true;
+    enableZshIntegration = true;
+    enableInstantMode = false;
   };
 }
