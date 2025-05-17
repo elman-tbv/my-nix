@@ -21,12 +21,13 @@
     tmux
     bat
     thefuck
+    htop
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # ".screenrc".source = dotfiles/screenrc;
+    ".tmux.conf".source = ./dotfiles/tmux.conf;
   };
 
   home.sessionVariables = {
