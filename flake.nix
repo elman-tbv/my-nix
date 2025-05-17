@@ -9,7 +9,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkg.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
