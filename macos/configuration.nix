@@ -26,6 +26,11 @@
       onActivation.upgrade = true;
     };
 
+    system.keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
+    };
+
     system.activationScripts.applications.text = let
       env = pkgs.buildEnv {
         name = "system-applications";
