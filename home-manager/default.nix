@@ -27,11 +27,11 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".tmux.conf".source = ./dotfiles/tmux.conf;
+    ".tmux.conf".source = ../../home-manager/dotfiles/tmux.conf;
   };
 
   home.sessionVariables = {
-     EDITOR = "vim";
+    EDITOR = "vim";
   };
 
   programs.home-manager.enable = true;
