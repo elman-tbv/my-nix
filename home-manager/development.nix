@@ -9,12 +9,12 @@
   home.packages = with pkgs; [
     neovim
     vscode
-    #gcc
     clang
     clang-tools
     cmake
     ninja
     python3
+    direnv
   ];
 
   programs.vscode.profiles.default = {
