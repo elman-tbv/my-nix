@@ -31,6 +31,8 @@
       remapCapsLockToControl = true;
     };
 
+    system.primaryUser = "elman";
+
     system.activationScripts.applications.text = let
       env = pkgs.buildEnv {
         name = "system-applications";
