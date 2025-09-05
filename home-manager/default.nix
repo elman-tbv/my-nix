@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfiles, ... }:
 {
   home.username = "elman";
   home.homeDirectory = "/Users/elman";
@@ -20,15 +20,15 @@
     wget
     tmux
     bat
-    thefuck
     htop
+    pkg-config
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file = {
-    ".tmux.conf".source = ../../home-manager/dotfiles/tmux.conf;
-  };
+  #home.file = {
+  #  ".tmux.conf".source = "${inputs.dotfiles}/tmux.conf";
+  #};
 
   home.sessionVariables = {
     EDITOR = "vim";
@@ -73,9 +73,4 @@
     enableZshIntegration = true;
   };
 
-  programs.thefuck = {
-    enable = true;
-    enableZshIntegration = true;
-    enableInstantMode = false;
-  };
 }
