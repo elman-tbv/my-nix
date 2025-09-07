@@ -5,11 +5,6 @@
 
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfreePredicate = 
-    pkg: builtins.elem (pkgs.lib.getName pkg) [
-      "vscode"
-    ];
-
   home.packages = with pkgs; [
     zsh
     oh-my-zsh
@@ -64,7 +59,6 @@
       [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
       '';
     shellAliases = {
-      fk = "fuck";
     };
   };
 
