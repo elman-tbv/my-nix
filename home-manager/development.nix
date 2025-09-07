@@ -9,8 +9,9 @@
   home.packages = with pkgs; [
     neovim
     vscode
-    clang
     clang-tools
+    clang
+    gdb
     cmake
     ninja
     python3
@@ -27,10 +28,11 @@
       haskell.haskell
     ];
   };
- 
-  home.sessionVariables = {
-    CC = "gcc";
-    CXX = "g++";
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
