@@ -36,11 +36,15 @@
     };
     darwinPackages = self.darwinConfigurations."MacBook-Air-Elman".pkgs;
 
-    homeConfigurations."elman" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      modules = [
-        ./macos/home.nix
-      ];
-    };
+    homeConfigurations = {
+      "elman@macos" = home-manager.lib.homeManagerConfiguration {
+        home.username = "elman";
+        home.homeDirectory = "/Users/elman";
+        inherit pkgs;
+        modules = [
+          ./home-manager/default.nix
+          ./home-manager/development.nix
+        ];
+      };
   };
 }
