@@ -36,6 +36,14 @@
     };
     darwinPackages = self.darwinConfigurations."MacBook-Air-Elman".pkgs;
 
+    nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./nixos/configuration.nix
+        #./nixos/hardware-configuration.nix
+      ];
+    };
+
     homeConfigurations = {
       "elman@macos" = home-manager.lib.homeManagerConfiguration {
         home.username = "elman";
