@@ -114,7 +114,15 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-   services.openssh.enable = true;
+   services.openssh = {
+     enable = true;
+     ports = [ 3004 ];
+     settings = {
+       permitRootLogin = "no";
+       passwordAuthentication = true;
+       X11Forwarding = true;
+     };
+   };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -129,5 +137,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
