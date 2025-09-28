@@ -40,11 +40,21 @@
       "elman@macos" = home-manager.lib.homeManagerConfiguration {
         home.username = "elman";
         home.homeDirectory = "/Users/elman";
-        inherit pkgs;
         modules = [
           ./home-manager/default.nix
           ./home-manager/development.nix
         ];
       };
+
+      "elman@linux" = home-manager.lib.homeManagerConfiguration {
+        home.username = "elman";
+        home.homeDirectory = "/home/elman";
+        modules = [
+          ./home-manager/default.nix
+          ./home-manager/development.nix
+        ];
+      };
+    };
+
   };
 }
