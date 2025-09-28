@@ -1,8 +1,5 @@
 { config, pkgs, dotfiles, ... }:
 {
-  home.username = "elman";
-  home.homeDirectory = "/Users/elman";
-
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
@@ -17,6 +14,9 @@
     bat
     htop
     pkg-config
+    coreutils-full
+    gnupg
+    nmap
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
