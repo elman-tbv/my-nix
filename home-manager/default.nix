@@ -2,6 +2,8 @@
 {
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
+  manual.json.enable = true;
+
   home.packages = with pkgs; [
     zsh
     oh-my-zsh

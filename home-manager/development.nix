@@ -14,6 +14,8 @@
     python3
     direnv
     lazygit
+    qemu
+    virt-manager
   ];
 
   programs.vscode.profiles.default = {
