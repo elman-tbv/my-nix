@@ -46,12 +46,12 @@
 
     homeConfigurations = {
       "elman@macos" = home-manager.lib.homeManagerConfiguration {
-        home.username = "elman";
-        home.homeDirectory = "/Users/elman";
+        inherit pkgs;
+          #system = "aarch64-darwin";
         modules = [
-          ./home-manager/default.nix
-          ./home-manager/development.nix
+          ./macos/home.nix
         ];
+        extraSpecialArgs = { inherit inputs; };
       };
 
       "elman@linux" = home-manager.lib.homeManagerConfiguration {
