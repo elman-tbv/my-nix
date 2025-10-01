@@ -6,6 +6,7 @@
         home-manager
         xquartz
         mkalias # makes visible apps for spotlight
+        utm
       ];
 
     homebrew = {
