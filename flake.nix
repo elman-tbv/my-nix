@@ -40,7 +40,15 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./nixos/configuration.nix
-        #./nixos/hardware-configuration.nix
+        ./nixos/hardware-configuration.nix
+      ];
+    };
+
+    nixosConfigurations.nixos-vm = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./nixos-vm/configuration.nix
+        ./nixos-vm/hardware-configuration.nix
       ];
     };
 
@@ -54,14 +62,11 @@
         extraSpecialArgs = { inherit inputs; };
       };
 
-      "elman@linux" = home-manager.lib.homeManagerConfiguration {
-        home.username = "elman";
-        home.homeDirectory = "/home/elman";
+      "elman@nix" = home-manager.lib.homeManagerConfiguration {
         modules = [
-          ./home-manager/default.nix
-          ./home-manager/development.nix
-          ./home-manager/linux-gui.nix
+          ./nixos/home.nix
         ];
+        extraSpecialArgs = { inherit inputs; };
       };
     };
 
