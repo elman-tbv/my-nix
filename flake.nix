@@ -12,9 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
+  outputs = { self, nix-darwin, nixpkgs, home-manager, nix-homebrew, ... } @inputs :
   let
     system = "aarch64-darwin";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -55,7 +56,6 @@
     homeConfigurations = {
       "elman@macos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-          #system = "aarch64-darwin";
         modules = [
           ./macos/home.nix
         ];
@@ -63,6 +63,7 @@
       };
 
       "elman@nix" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
         modules = [
           ./nixos/home.nix
         ];
