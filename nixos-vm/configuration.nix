@@ -2,21 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../modules/hyprland.nix
     ];
 
-# programs.hyprland = {
-#   enable = true;
-#   withUWSM = true;
-#   xwayland.enable = true;
-# };
-# environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -95,9 +89,10 @@
     description = "elman";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  thunderbird
     ];
   };
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
@@ -118,6 +113,8 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     home-manager
+    kitty
+    zsh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -131,15 +128,15 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-   services.openssh = {
-     enable = true;
-     ports = [ 3004 ];
-     settings = {
-       permitRootLogin = "no";
-       passwordAuthentication = true;
-       X11Forwarding = true;
-     };
-   };
+  services.openssh = {
+    enable = true;
+    ports = [ 3004 ];
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+      X11Forwarding = true;
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
