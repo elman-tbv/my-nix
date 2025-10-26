@@ -71,5 +71,16 @@
       };
     };
 
+    templates = {
+      cpp = {
+        path = ./templates/cpp;
+        description = "C/C++ template for development enviroment";
+      };
+      opengl = {
+        path = ./templates/opengl;
+        description = "OpenGL development enviroment";
+      };
+    };
+
   };
 }
