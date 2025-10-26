@@ -22,6 +22,9 @@ in
     coreutils-full
     gnupg
     nmap
+    yazi
+    zip
+    unzip
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -36,7 +39,7 @@ in
   };
 
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   programs.home-manager.enable = true;
