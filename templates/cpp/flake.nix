@@ -1,5 +1,5 @@
 {
-  description "C/C++ development enviroment";
+  description = "C/C++ development enviroment";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
@@ -11,23 +11,24 @@
         "aarch64-darwin"
       ];
       forEachSystem = f:
-        nixpkgs.lib.getAttrs supportedSystems ( system: f {
+        nixpkgs.lib.genAttrs supportedSystems ( system: f {
           pkgs = import nixpkgs {inherit system; };
-        };
+        }
+      );
     in 
   {
     devShells = forEachSystem (
       { pkgs }:
       {
         default = pkgs.mkShell {
-          packages = with pgs; [
+          packages = with pkgs; [
             clang-tools
             clang
             cmake
             ninja
             autoconf
             automake
-            automake-archive
+            autoconf-archive
             libtool
           ];
         };
