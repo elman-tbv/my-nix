@@ -11,7 +11,7 @@
       ../modules/hyprland.nix
     ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

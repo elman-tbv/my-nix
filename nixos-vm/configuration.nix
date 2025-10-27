@@ -11,7 +11,7 @@
       ../modules/hyprland.nix
     ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -21,6 +21,8 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.kernelModules = [ "virtio_gpu" ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
