@@ -58,6 +58,7 @@
         inherit pkgs;
         modules = [
           ./macos/home.nix
+          ./modules/shared.nix
         ];
         extraSpecialArgs = { inherit inputs; };
       };
@@ -66,6 +67,7 @@
         inherit pkgs;
         modules = [
           ./nixos/home.nix
+          ./modules/shared.nix
         ];
         extraSpecialArgs = { inherit inputs; };
       };

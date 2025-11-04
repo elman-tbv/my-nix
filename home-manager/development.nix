@@ -9,8 +9,6 @@
   home.packages = with pkgs; [
     neovim
     vscode
-    gcc
-    gdb
     python3
     nix-direnv
     lazygit
@@ -26,6 +24,15 @@
       vscodevim.vim
       haskell.haskell
     ];
+  };
+
+  xdg.configFile."nvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/nvim";
+    recursive = true;
+  };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
   };
 
   programs.direnv = {

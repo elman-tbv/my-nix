@@ -1,7 +1,4 @@
 { config, pkgs, inputs, ... }:
-let
-  dotfiles = "${config.home.homeDirectory}/.config/nix/dotfiles";
-in
 {
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
@@ -29,18 +26,9 @@ in
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/tmux.conf";
+  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/tmux.conf";
 
   xdg.enable = true;
-
-  xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/nvim";
-    recursive = true;
-  };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 
   programs.home-manager.enable = true;
 
