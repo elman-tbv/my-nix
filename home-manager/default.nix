@@ -15,6 +15,7 @@
     tmux
     bat
     htop
+    btop
     pkg-config
     coreutils-full
     gnupg
@@ -29,6 +30,11 @@
   home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/tmux.conf";
 
   xdg.enable = true;
+
+  xdg.configFile."btop" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/btop";
+    recursive = true;
+  };
 
   programs.home-manager.enable = true;
 
