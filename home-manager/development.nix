@@ -31,6 +31,11 @@
     recursive = true;
   };
 
+  xdg.configFile."kitty" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/kitty";
+    recursive = true;
+  };
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
