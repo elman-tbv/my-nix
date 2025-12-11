@@ -1,30 +1,20 @@
 { config, pkgs, ... }:
 {
 
-  nixpkgs.config.allowUnfreePredicate = 
+  nixpkgs.config.allowUnfreePredicate =
     pkg: builtins.elem (pkgs.lib.getName pkg) [
       "vscode"
     ];
 
   home.packages = with pkgs; [
     neovim
-    vscode
+    zed-editor
     python3
     nix-direnv
     lazygit
     qemu
+    nixd
   ];
-
-  programs.vscode.profiles.default = {
-    enable = true;
-    enableUpdateCheck = true;
-    enableExtensionUpdateCheck = true;
-    extensions = with pkgs.vscode-extensions; [
-      ms-vscode.cpptools-extension-pack
-      vscodevim.vim
-      haskell.haskell
-    ];
-  };
 
   xdg.configFile."nvim" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/nvim";
