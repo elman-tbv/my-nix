@@ -40,10 +40,12 @@
 
   programs.git = {
     enable = true;
-    userName = "Elman Teyubov";
-    userEmail = "elman.teyubov@gmail.com";
-    aliases = {
-    }; 
+    settings = {
+      user.name = "Elman Teyubov";
+      user.email = "elman.teyubov@gmail.com";
+      alias = {
+      };
+    };
   };
 
   programs.zsh = {
