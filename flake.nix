@@ -82,6 +82,10 @@
         path = ./templates/opengl;
         description = "OpenGL development enviroment";
       };
+      rust = {
+        path = ./templates/rust;
+        description = "Rust development enviroment";
+      };
     };
 
   };
