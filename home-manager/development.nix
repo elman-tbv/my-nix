@@ -14,6 +14,8 @@
     lazygit
     qemu
     nixd
+    docker
+    podman
   ];
 
   xdg.configFile."nvim" = {
