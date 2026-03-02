@@ -76,4 +76,9 @@
     enableZshIntegration = true;
   };
 
+  xdg.configFile."yazi" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/yazi";
+    recursive = true;
+  };
+
 }
