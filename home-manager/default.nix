@@ -1,6 +1,6 @@
 { config, pkgs, inputs, ... }:
 {
-  home.stateVersion = "24.11"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 
   manual.json.enable = true;
 
