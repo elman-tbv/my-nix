@@ -1,4 +1,12 @@
 { config, pkgs, inputs, ... }:
+let
+  tpmRepo = pkgs.fetchFromGitHub {
+    owner = "tmux-plugins";
+    repo = "tpm";
+    rev = "v3.1.0";
+    sha256 = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
+  };
+in
 {
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
@@ -27,6 +35,10 @@
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
+  home.file.".tmux/plugins/tpm" = {
+    source = "${tpmRepo}";
+    recursive = true;
+  };
   home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/tmux.conf";
 
   xdg.enable = true;
