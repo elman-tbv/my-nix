@@ -6,4 +6,9 @@
     ../home-manager/default.nix
     ../home-manager/development.nix
   ];
+
+  home.packages = with pkgs; [
+    lima
+    utm
+  ];
 }
