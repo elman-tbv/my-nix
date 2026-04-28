@@ -1,12 +1,9 @@
 {self, inputs, ... }: {
   flake.nixosConfigurations.nixos-vm = inputs.nixpkgs.lib.nixosSystem {
-    #specialArgs = { inherit inputs; };
-    #system = "aarch65-linux";
+    system = "aarch64-linux";
     modules = [
-      #self.nixosModules.configuration
-      #self.nixosModules.nixosvm-hardware
-      ./hosts/nixos-vm/configuration.nix
-#      ./hosts/nixos-vm/hardware-configuration.nix
+      self.nixosModules.nixos-vm-configuration
+      self.nixosModules.qemu-hardware
     ];
   };
 }

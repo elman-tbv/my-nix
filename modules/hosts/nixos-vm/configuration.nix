@@ -2,10 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, inputs, config, pkgs, ... }:
+{
+flake.nixosModules.nixos-vm-configuration = { config, pkgs, inputs, ... }: {
 
-flake.nixosModules.configuration = {config, pkgs, ...}: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = "nix-command flakes";
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -77,7 +77,7 @@ flake.nixosModules.configuration = {config, pkgs, ...}: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.elman = {
     isNormalUser = true;
-    description = "Elman";
+    description = "elman";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
@@ -126,4 +126,5 @@ flake.nixosModules.configuration = {config, pkgs, ...}: {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
+};
 }
