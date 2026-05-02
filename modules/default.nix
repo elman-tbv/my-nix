@@ -1,5 +1,5 @@
 {
-flake.homeModules.elmanModule = { config, pkgs, inputs, ... }:
+flake.homeModules.elmanModule = { self, config, pkgs, inputs, ... }:
 let
   tpmRepo = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
@@ -7,6 +7,8 @@ let
     rev = "v3.1.0";
     sha256 = "sha256-CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
   };
+  #dotfiles = "${config.home.homeDirectory}/.config/nix/dotfiles";
+  dotfiles.path = config.dotfiles.path;
 in
 {
   home.username = "elman";
@@ -44,12 +46,12 @@ in
     source = "${tpmRepo}";
     recursive = true;
   };
-  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/tmux.conf";
+  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotfiles.path}/tmux.conf";
 
   xdg.enable = true;
 
   xdg.configFile."btop" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/btop";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/btop";
     recursive = true;
   };
 
@@ -94,8 +96,8 @@ in
   };
 
   xdg.configFile."yazi" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/yazi";
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles.path}/yazi";
     recursive = true;
   };
-}
+};
 }
