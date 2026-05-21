@@ -1,5 +1,5 @@
 {
-flake.homeModules.elmanModule = { self, config, pkgs, inputs, ... }:
+flake.homeModules.default = { self, config, pkgs, inputs, ... }:
 let
   tpmRepo = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
@@ -51,7 +51,7 @@ in
   xdg.enable = true;
 
   xdg.configFile."btop" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/btop";
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles.path}/btop";
     recursive = true;
   };
 

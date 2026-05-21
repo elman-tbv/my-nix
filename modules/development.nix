@@ -1,11 +1,11 @@
 {
-flake.homeModules.development = { self, config, pkgs, inputs, ... }:
+flake.homeModules.development = { config, pkgs, inputs, ... }:
 {
 
-  nixpkgs.config.allowUnfreePredicate =
-    pkg: builtins.elem (pkgs.lib.getName pkg) [
-      "vscode"
-    ];
+# inputs.nixpkgs.config.allowUnfreePredicate =
+#   pkg: builtins.elem (pkgs.lib.getName pkg) [
+#     "vscode"
+#   ];
 
   home.packages = with pkgs; [
     neovim
@@ -20,12 +20,12 @@ flake.homeModules.development = { self, config, pkgs, inputs, ... }:
   ];
 
   xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/nvim";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/nvim";
     recursive = true;
   };
 
   xdg.configFile."kitty" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/kitty";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/kitty";
     recursive = true;
   };
 
