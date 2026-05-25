@@ -7,6 +7,7 @@
       desktop
       users
       services
+      home-manager
     ];
   };
 }
