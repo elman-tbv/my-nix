@@ -8,6 +8,7 @@
         development
         users
         shell
+        apps
       ];
     };
   };

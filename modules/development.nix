@@ -8,7 +8,6 @@ flake.homeModules.development = { config, pkgs, inputs, ... }:
 #   ];
 
   home.packages = with pkgs; [
-    neovim
     zed-editor
     python3
     nix-direnv
@@ -19,18 +18,9 @@ flake.homeModules.development = { config, pkgs, inputs, ... }:
     podman
   ];
 
-  xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/nvim";
-    recursive = true;
-  };
-
   xdg.configFile."kitty" = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/kitty";
     recursive = true;
-  };
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
   };
 
   programs.direnv = {
