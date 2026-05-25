@@ -10,7 +10,7 @@
       };
     };
 
-    modules.homeManager.users = {
+    homeModules.users = {
       home = {
         username = "elman";
         homeDirectory = "/home/elman";
