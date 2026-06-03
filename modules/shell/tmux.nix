@@ -1,5 +1,5 @@
 {
-  flake.homeManager.shell = {config, pkgs, inputs, ...}:
+  flake.homeModules.shell = {config, pkgs, inputs, ...}:
 let
   tpmRepo = pkgs.fetchFromGitHub {
     owner = "tmux-plugins";
@@ -14,6 +14,6 @@ in
     source = "${tpmRepo}";
     recursive = true;
   };
-  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/tmux.conf";
+  home.file.".tmux.conf".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/tmux.conf";
 };
 }
