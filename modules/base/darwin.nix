@@ -5,9 +5,10 @@ flake.darwinModules.base = {config, pkgs, ... }: {
     environment.systemPackages = with pkgs;
       [
         home-manager
-        xquartz
+        #xquartz
         mkalias # makes visible apps for spotlight
         utm
+        lima
       ];
 
     homebrew = {
@@ -59,6 +60,9 @@ flake.darwinModules.base = {config, pkgs, ... }: {
 
     system.defaults = {
       dock.autohide = true;
+      screencapture = {
+        location = "~/Pictures/screenshots/";
+      };
     };
     # Necessary for using flakes on this system.
     nix.settings.experimental-features = "nix-command flakes";

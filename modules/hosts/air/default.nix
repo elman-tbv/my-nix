@@ -11,7 +11,6 @@
           autoMigrate = true;
         };
       }
-      home-manager
     ];
   };
 }
