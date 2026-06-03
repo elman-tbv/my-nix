@@ -10,10 +10,12 @@
       };
     };
 
-    homeModules.users = {
+    homeModules.users = {pkgs, ...}: {
       home = {
         username = "elman";
-        homeDirectory = "/home/elman";
+        homeDirectory = if pkgs.stdenv.isDarwin
+                        then "/Users/elman"
+                        else "/home/elman";
       };
     };
   };
