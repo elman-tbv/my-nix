@@ -10,7 +10,6 @@ flake.homeModules.development = { config, pkgs, inputs, ... }:
   home.packages = with pkgs; [
     zed-editor
     python3
-    nix-direnv
     lazygit
     qemu
     nixd
