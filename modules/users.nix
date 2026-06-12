@@ -1,11 +1,13 @@
 {
   flake = {
-    nixosModules.users = {
+    nixosModules.users = {pkgs, ...}: {
+      programs.zsh.enable = true;
       users.users = {
         elman = {
           isNormalUser = true;
           description = "elman";
           extraGroups = [ "networkmanager" "wheel" ];
+          shell = pkgs.zsh;
         };
       };
     };
