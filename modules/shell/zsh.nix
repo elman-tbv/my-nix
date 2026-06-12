@@ -18,10 +18,27 @@
       custom = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k";
       };
       initContent = ''
-        [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+        [[ -f ~/.config/zsh/.p10k.zsh ]] && source ~/.config/zsh/.p10k.zsh
+        if [[ $- == *i* ]]; then
+          bindkey -v
+          autoload -U edit-command-line
+          zle -N edit-command-line
+          bindkey -M vicmd 'v' edit-command-line
+        fi
         '';
       shellAliases = {
+        ll = "ls -alF";
+        la = "ls -A";
+        l = "ls -CF";
+
+        ez = "eza --icons --sort=type";
+        el = "ez --long --header";
+        ea = "ez --all";
       };
+    };
+    xdg.configFile."zsh/.p10k.zsh" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles.path}/zsh/.p10k.zsh";
+      recursive = true;
     };
   };
 }
