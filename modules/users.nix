@@ -6,7 +6,7 @@
         elman = {
           isNormalUser = true;
           description = "elman";
-          extraGroups = [ "networkmanager" "wheel" ];
+          extraGroups = [ "networkmanager" "wheel" "docker" ];
           shell = pkgs.zsh;
         };
       };

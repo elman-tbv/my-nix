@@ -7,6 +7,7 @@
       desktop
       users
       services
+      virtualisation
       home-manager
     ];
   };

@@ -17,6 +17,7 @@
           shell
           apps
           desktop
+          virtualisation
         ];
       };
     };
