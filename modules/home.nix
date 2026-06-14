@@ -12,7 +12,6 @@
         }
           base
           dotfiles
-          development
           users
           shell
           apps
