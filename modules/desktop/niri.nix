@@ -1,10 +1,10 @@
 { self, inputs, ... }: {
-  flake.nixosModules.desktop = { config, pkgs, inputs, ...}: {
+  flake.nixosModules.desktop = { config, pkgs, lib, inputs, ...}: {
     programs.niri.enable = true;
     xdg.portal.wlr.enable = true;
   };
 
-  flake.homeModules.desktop = { self, config, pkgs, inputs, ...}: {
+  flake.homeModules.desktop = { self, config, pkgs, lib, inputs, ...}: lib.mkIf pkgs.stdenv.isLinux {
     programs.niri.enable = true;
     programs.niri.package = pkgs.niri;
     xdg.configFile."niri" = {

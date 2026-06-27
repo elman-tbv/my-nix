@@ -12,7 +12,7 @@ let
     mkdir -p $out/share/sddm/themes
     cp -r ${repo} $out/share/sddm/themes/sddm-astronaut-theme
   '';
-in 
+in
 {
   services.displayManager.sddm = {
     enable     = true;
